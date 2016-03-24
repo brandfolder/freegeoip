@@ -5,7 +5,9 @@ COPY cmd/freegeoip/public /var/www
 ADD . /go/src/github.com/fiorix/freegeoip
 RUN cd /go/src/github.com/fiorix/freegeoip/cmd/freegeoip && go get && go install
 
-CMD ["-use-x-forwarded-for", "8888"]
+EXPOSE 8080
+
+CMD ["-use-x-forwarded-for"]
 ENTRYPOINT ["/go/bin/freegeoip"]
 
 # CMD instructions:
